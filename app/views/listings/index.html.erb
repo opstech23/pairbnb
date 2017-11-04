@@ -1,0 +1,11 @@
+<%= link_to 'Home', root_path %>
+
+<h1>Listing</h1>
+
+<% @listings.each do |list| %>
+	<p>
+	<%= list.id %>
+	<%= list.title %>
+	<%= link_to 'Edit', edit_listing_path(list.id) %>
+	</p>
+<% end %>

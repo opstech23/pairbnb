@@ -1,6 +1,6 @@
-<h1>Listings</h1>
+<h1>Edit Listings</h1>
 
-<%= form_for @listing do |f| %>
+<%= form_for (@listing) do |f| %>
 	<div>
 		<%= f.label :title %>
 		<%= f.text_field :title %>
@@ -26,7 +26,6 @@
 		<%= f.text_field :price %>
 	</div>
 	<div>
-		<%= f.submit 'Submit' %>
+		<%= f.submit 'change' %>
 	</div>
 <% end %>
-
