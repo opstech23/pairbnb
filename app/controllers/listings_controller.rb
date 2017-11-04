@@ -40,9 +40,8 @@ class ListingsController < ApplicationController
 
   def destroy
   	@listing = Listing.find(params[:id])
-  	@listing.destroy
-  	
-  	redirect_to listing_path, notice: "Delete Success"
+  	if @listing.destroy
+  		redirect_to listings_path, notice: "Delete Success"
   	end
   end
 
