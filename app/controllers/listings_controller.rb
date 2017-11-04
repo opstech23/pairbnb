@@ -4,4 +4,8 @@ class ListingsController < ApplicationController
   def index
     current_user.listings
   end
+
+  def new
+  	@listings = Listing.new
+  end
 end
