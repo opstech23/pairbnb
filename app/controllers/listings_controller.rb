@@ -1,9 +1,10 @@
 class ListingsController < ApplicationController
   before_action :require_login , only: [:destroy]
+  before_action :find_listing , only: [:show, :edit, :update]
 
   def index
-    # current_user.listings
-    @listings = Listing.all
+    @listings =  current_user.listings.all
+    #@listings = Listing.all
   end
 
   def new
@@ -11,7 +12,8 @@ class ListingsController < ApplicationController
   end
 
   def create
-  	@listing = Listing.new(listing_params)
+  	#@listing = Listing.new(listing_params)
+    @listing = current_user.listings.new(listing_params)
   	if @listing.save
   		redirect_to listings_path
   	end
@@ -48,6 +50,6 @@ class ListingsController < ApplicationController
   private
   	def listing_params
   		params.require(:listing).permit(:title, :description, :country,
-  			:state_or_province, :max_guests, :price)
+  			:state_or_province, :address, :max_guests, :price)
   	end
 end
