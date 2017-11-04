@@ -6,4 +6,8 @@
 	<%= @listing.id %>
 	<%= @listing.title %>
 	<%= link_to 'Edit', edit_listing_path(@listing.id) %>
+	<%= link_to 'Delete', 
+				delete_listing_path(@listing.id),
+				method: :delete,
+				data: { confirm: 'Are you sure?' } %>
 	</p>

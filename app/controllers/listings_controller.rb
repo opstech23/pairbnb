@@ -33,12 +33,16 @@ class ListingsController < ApplicationController
 
   def show
   	@listing = Listing.find(params[:id])
+  	if @listing.nil?
+  		redirect_to listing_path
+  	end
   end
 
   def destroy
   	@listing = Listing.find(params[:id])
-  	if @listing.destroy
-  		redirect_to listing_path
+  	@listing.destroy
+  	
+  	redirect_to listing_path, notice: "Delete Success"
   	end
   end
 
