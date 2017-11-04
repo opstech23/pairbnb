@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_action :require_login
+  before_action :require_login , only: [:destroy]
 
   def index
     # current_user.listings
@@ -19,6 +19,27 @@ class ListingsController < ApplicationController
 
   def edit
   	@listing = Listing.find(params[:id])
+  end
+
+  def update
+  	@listing = Listing.find(params[:id])
+  	if @listing.update listing_params
+  		@listing.save
+  		redirect_to listing_path
+  	else
+  		render 'edit'
+  	end
+  end
+
+  def show
+  	@listing = Listing.find(params[:id])
+  end
+
+  def destroy
+  	@listing = Listing.find(params[:id])
+  	if @listing.destroy
+  		redirect_to listing_path
+  	end
   end
 
   private
